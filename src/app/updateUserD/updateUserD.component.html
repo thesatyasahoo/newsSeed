@@ -1,0 +1,102 @@
+<div mat-dialog-content>
+  <div class="row">
+    <div class="col d-flex justify-content-center">
+      <label class="hoverable" for="fileInput">
+        <img
+          [src]="url ? url : '../assets/loading-gif-png-5.gif'"
+        />
+        <div class="hover-text">
+          Choose file
+          <h4 class="success-message" *ngIf="url">Uploaded Successfully</h4>
+        </div>
+        <div class="background"></div>
+      </label>
+      <br />
+      <input id="fileInput" type="file" (change)="onSelectFile($event)" />
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col">
+      <form [formGroup]="userForm">
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input
+                matInput
+                placeholder="Placeholder"
+                value="{{ data.firstName }}"
+                formControlName="firstName"
+              />
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input
+                matInput
+                placeholder="Placeholder"
+                value="{{ data.lastName }}"
+                formControlName="lastName"
+              />
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>User Name</mat-label>
+              <input
+                matInput
+                placeholder="Placeholder"
+                value="{{ data.username }}"
+                formControlName="username"
+              />
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                placeholder="Placeholder"
+                value="{{ data.email }}"
+                formControlName="email"
+              />
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Password</mat-label>
+              <input
+              type="password"
+                matInput
+                placeholder="Placeholder"
+                formControlName="password"
+              />
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <div class="row w-100">
+    <div class="col">
+      <button mat-raised-button color="primary" [disabled]="!userForm.valid" (click)="update(data._id, userForm.value)">Update</button>
+    </div>
+    <div class="col text-end">
+      <button mat-button [mat-dialog-close]="data.firstName" cdkFocusInitial>
+        Close
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div mat-dialog-content>
+  <div class="row">
+    <div class="col">
+      <img src={{data.urlToImage}} class="img-fluid" alt="loading...">
+    </div>
+    <div class="col">
+      <div class="row">
+        <div class="col">
+          <h2>{{data.author || "Lorem Ipsum"}}</h2>
+        </div>
+        <div class="col text-end">
+          <h3>{{data.publishedAt | date}}</h3>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col text-center">
+          <h3>{{data.title}}</h3>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col" style="text-align: justify">
+          <p>{{data.description}}</p>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col" style="text-align: justify">
+          <p>{{data.content}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <div class="row w-100">
+    <div class="col text-end">
+      <button mat-button [mat-dialog-close]="data.firstName" cdkFocusInitial>
+        Close
+      </button>
+    </div>
+  </div>
+</div>

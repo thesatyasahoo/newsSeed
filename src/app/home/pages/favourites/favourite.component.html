@@ -1,0 +1,43 @@
+<div class="container-fluid mt-4">
+  <div class="row mb-3">
+    <div class="col">
+      <h2>Favourites News</h2>
+    </div>
+    <div class="col text-end">
+      <button mat-raised-button color="primary" (click)="addNewNews()">Add News Feed</button>
+    </div>
+  </div>
+  <div class="row mb-5 mx-4">
+    <div class="col-lg-3 col-xl-3 col-md-3 col-sm-12 col-xs-3 mb-5" *ngFor="let item of newsData; index as i">
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{ item.author || "testUser"}}</mat-card-title>
+          <mat-card-subtitle>{{ item.publishedAt | date }}</mat-card-subtitle>
+        </mat-card-header>
+        <img
+          mat-card-image
+          src={{item.urlToImage}}
+          alt=""
+        />
+        <mat-card-content>
+          <p style="text-align: justify;">
+            {{ item.description }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="row">
+            <div class="col">
+              <a mat-button (click)="getNewsDetail(item)">Read More</a>
+              <!-- <a href={{item.url}} class="bg-dark text-white"></a>
+              <button>Read More</button> -->
+            </div>
+            <div class="col text-end">
+              <button mat-button color="accent" (click)="deleteBookmark(item)">Delete Bookmark</button>
+            </div>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

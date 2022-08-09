@@ -1,0 +1,81 @@
+<div mat-dialog-content>
+  <div class="row">
+    <div class="col d-flex justify-content-center">
+      <label class="hoverable" for="fileInput">
+        <img
+          [src]="url ? url : '../assets/loading-gif-png-5.gif'"
+        />
+      </label>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col">
+      <form>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input
+                matInput
+                placeholder="Placeholder"
+                value="{{ data.firstName }}"
+                readonly
+              />
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input
+                matInput
+                placeholder="Placeholder"
+                value="{{ data.lastName }}"
+                readonly
+              />
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>User Name</mat-label>
+              <input
+                matInput
+                placeholder="Placeholder"
+                value="{{ data.username }}"
+                readonly
+              />
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                placeholder="Placeholder"
+                value="{{ data.email }}"
+                readonly
+              />
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <div class="row w-100">
+    <!-- <div class="col">
+      <button mat-button>No Thanks</button>
+    </div> -->
+    <div class="col text-end">
+      <button mat-button [mat-dialog-close]="data.firstName" cdkFocusInitial>
+        Ok
+      </button>
+    </div>
+  </div>
+</div>

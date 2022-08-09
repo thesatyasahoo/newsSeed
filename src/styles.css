@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: lightgray;}
+
+
+body > app-root > app-home > mat-drawer-container > mat-drawer > div > div:nth-child(3) > div > mat-list > mat-list-item:nth-child(n):hover{
+  background-color: lightgray;
+  animation: ease-in;
+  color: black;
+  cursor: pointer;
+}

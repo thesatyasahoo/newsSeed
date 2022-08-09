@@ -1,0 +1,76 @@
+.example-container {
+  height: 100vh;
+}
+.mat-drawer {
+  width: 15%;
+  background: #ece9e6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ffffff,
+    #ece9e6
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ffffff,
+    #ece9e6
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.mat-list-icon {
+  color: rgba(0, 0, 0, 0.54);
+}
+app-dashboard {
+  min-height: 80vh;
+}
+app-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.row {
+  margin-right: 0 !important;
+}
+@media (max-width: 576px) {
+  app-footer {
+    display: none !important;
+  }
+  .d-nonec {
+    display: none !important;
+  }
+}
+@media (max-width: 992px) {
+  app-footer {
+    display: none !important;
+  }
+  .d-nonec {
+    display: none !important;
+  }
+  .mat-drawer {
+    width: auto;
+  }
+}
+.mat-drawer-content {
+  background: #8e9eab; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #eef2f3,
+    #8e9eab
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #eef2f3,
+    #8e9eab
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.mat-toolbar {
+  background: #00d2ff; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #3a7bd5,
+    #00d2ff
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #3a7bd5,
+    #00d2ff
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
