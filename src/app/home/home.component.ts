@@ -44,14 +44,17 @@ export class HomeComponent implements OnInit {
     // )
   }
   download(id: string) {
-    this.userService.downloadDp(id).subscribe(
-      (r) => {
-        console.log(r);
-        this.url = r;
-      }, (err) => {
-        console.log(err)
-      }
-    )
+    console.log(id)
+    if(this.userInfo.file) {
+      this.userService.downloadDp(id).subscribe(
+        (r) => {
+          console.log(r);
+          this.url = r;
+        }, (err) => {
+          console.log(err)
+        }
+      )
+    }
   }
   logout() {
     localStorage.clear();

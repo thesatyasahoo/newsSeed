@@ -1,11 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort, SortDirection } from '@angular/material/sort';
 import { Router } from '@angular/router';
-import { startWith, switchMap, catchError, map } from 'rxjs';
-import {merge, Observable, of as observableOf} from 'rxjs';
 import { DialogComponent } from 'src/app/dialog/dialog.component';
 import { UserService } from 'src/app/services/user.service';
 import { UpdateUserDComponent } from 'src/app/updateUserD/updateUserD.component';
@@ -20,10 +15,11 @@ export class UsersComponent implements OnInit {
   user: any = {};
   usermatch: string = "";
   displayedColumns: string[] = ['username', 'firstName', 'lastName', 'email', 'action'];
-  constructor(private userService: UserService, public dialog: MatDialog, private router: Router) {}
+  constructor(private userService: UserService, public dialog: MatDialog, private router: Router) {
+    this.getAllUsers();
+  }
 
   ngOnInit(): void {
-    this.getAllUsers();
     this.user = localStorage.getItem("User");
     this.usermatch = JSON.parse(this.user).email;
   }
@@ -31,13 +27,10 @@ export class UsersComponent implements OnInit {
   getAllUsers() {
     return this.userService.getAll().subscribe(async (res: any) => {
       this.usermatch = JSON.parse(this.user).email;
-      let userData: any[] = [] 
-      await Promise.all(
-        res.map((e: any) => {
-          userData.push(e);
-        })
-      )
-      this.dataSource = userData;
+      console.log(res)
+      this.dataSource = res;
+    }, (err) => {
+      console.log(err)
     })
   }
 
