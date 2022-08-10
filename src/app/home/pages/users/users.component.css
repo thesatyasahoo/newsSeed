@@ -155,7 +155,10 @@ mat-cell {
     text-decoration:none;
 }
 .profile-card-3 i:hover {
-  background-color:#232323;
+  background-color:#9e9c9c;
   color:#fff;
   text-decoration:none;
+}
+.hidden {
+  visibility: hidden;
 }
