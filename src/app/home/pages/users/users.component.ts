@@ -13,8 +13,8 @@ import { UpdateUserDComponent } from 'src/app/updateUserD/updateUserD.component'
 export class UsersComponent implements OnInit {
   dataSource: any = [];
   user: any = {};
+  url:any = "";
   usermatch: string = "";
-  displayedColumns: string[] = ['username', 'firstName', 'lastName', 'email', 'action'];
   constructor(private userService: UserService, public dialog: MatDialog, private router: Router) {
     this.getAllUsers();
   }
@@ -25,10 +25,24 @@ export class UsersComponent implements OnInit {
   }
 
   getAllUsers() {
+    let tempData: any[] = [];
     return this.userService.getAll().subscribe(async (res: any) => {
       this.usermatch = JSON.parse(this.user).email;
-      console.log(res)
-      this.dataSource = res;
+      
+      res.map(async (r: User) => {
+        console.log(r.file);
+        tempData.push({
+          _id: r._id,
+          firstName: r.firstName,
+          lastName: r.lastName,
+          username: r.username,
+          email: r.email,
+          password: r.password,
+          file: r.file !== "" ? "http://localhost:3000/"+r.file : "../../../../assets/149071.png",
+        })
+      })
+      this.dataSource = tempData;
+      console.log(tempData)
     }, (err) => {
       console.log(err)
     })
@@ -57,6 +71,18 @@ export class UsersComponent implements OnInit {
     })
   }
 
+  download(id: string) {
+    return this.userService.downloadDp(id).subscribe(
+      async (r: any) => {
+        // console.log(r);
+        this.url = r;
+        return await this.url;
+      }, (err) => {
+        console.log(err)
+      }
+    )
+  }
+
   updateDada(e: any) {
     console.log(e);
     const dialogRef = this.dialog.open(UpdateUserDComponent, {
@@ -73,3 +99,12 @@ export class UsersComponent implements OnInit {
   }
 }
 
+export interface User {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+  email: string;
+  password: string;
+  file: any;
+}

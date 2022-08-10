@@ -1,74 +1,25 @@
 <div class="container-fluid mt-4">
   <div class="col mx-5">
-    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-      <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
-
-      <!-- username Column -->
-      <ng-container matColumnDef="username">
-        <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <div class="row">
-            <div class="col d-lg-none"><span class="header-label">{{'Username'}} :</span></div>
-            <div class="col">{{element.username}}</div>
+    <div class="row">
+      <div class="col-md-3" *ngFor="let user of dataSource">
+        <div class="card profile-card-3" >
+          <div class="background-block">
+            <img
+              src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+              alt="profile-sample1" class="background" />
           </div>
-        </mat-cell>
-      </ng-container>
-
-      <!-- firstName Column -->
-      <ng-container matColumnDef="firstName">
-        <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
-        <mat-cell *matCellDef="let element">
-           <div class="row">
-            <div class="col d-lg-none"><span class="header-label">{{'First Name'}} :</span></div>
-            <div class="col">{{element.firstName}}</div>
+          <div class="profile-thumb-block">
+            <img src="{{user.file}}" alt="profile-image" class="profile" />
           </div>
-        </mat-cell>
-      </ng-container>
+          <div class="card-content">
+            <h2>{{user.firstName}} <span style="font-size: small;">{{user.lastName}}</span></h2>
+            <div class="icon-block"><a (click)="onClickGetUser(user)"><i class="fa-solid fa-eye" style="color: #0073aa;"></i></a>
+              <a (click)="updateDada(user)">
+              <i class="fa-solid fa-pen" style="color: sandybrown;"></i></a><a (click)="delete(user)"> <i class="fa-solid fa-trash" style="color: red;"></i></a></div>
+        </div>
+        <!-- <p class="mt-3 w-100 float-left text-center"><strong>Modren Profile Card</strong></p> -->
+      </div>
+    </div>
 
-      <!-- lastName Column -->
-      <ng-container matColumnDef="lastName">
-        <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
-        <mat-cell *matCellDef="let element">
-           <div class="row">
-            <div class="col d-lg-none"><span class="header-label">{{'Last Name'}} :</span></div>
-            <div class="col">{{element.lastName}}</div>
-          </div>
-        </mat-cell>
-      </ng-container>
-
-      <!-- email Column -->
-      <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-        <mat-cell *matCellDef="let element">
-           <div class="row">
-            <div class="col d-lg-none"><span class="header-label">{{'Email'}} :</span></div>
-            <div class="col">{{element.email}}</div>
-          </div>
-        </mat-cell>
-      </ng-container>
-
-      <!-- action Column -->
-      <ng-container matColumnDef="action">
-        <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
-        <mat-cell *matCellDef="let element"  style="width: 10rem;">
-          <div class="col d-lg-none"><span class="header-label">{{'Action'}} :</span></div>
-          <div class="col">
-            <div class="row">
-              <div class="col">
-                <mat-icon aria-hidden="false" style="color: orange; cursor: pointer;" aria-label="Example home icon" (click)="onClickGetUser(element)">visibility</mat-icon></div>
-              <div class="col ml-0" *ngIf="usermatch === element.email"><mat-icon aria-hidden="false" style="color: #0073aa; cursor: pointer;" aria-label="Example home icon" (click)="updateDada(element)">edit</mat-icon></div>
-              <div class="col" *ngIf="usermatch === element.email"><mat-icon aria-hidden="false" style="color: red; cursor: pointer;" aria-label="Example home icon" (click)="delete(element)">delete</mat-icon></div>
-            </div>
-          </div>
-         
-        </mat-cell>
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-      
-    </mat-table>
   </div>
 </div>
