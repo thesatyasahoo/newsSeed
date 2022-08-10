@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.userInfo = JSON.parse(localStorage.getItem('User') || '');
-    this.download(this.userInfo.id)
+    this.download(this.userInfo.id);
     setTimeout(() => {
       this.isHandset$.subscribe((isVisible) => {
         if (isVisible) {
@@ -44,16 +44,17 @@ export class HomeComponent implements OnInit {
     // )
   }
   download(id: string) {
-    console.log(id)
-    if(this.userInfo.file) {
+    try {
       this.userService.downloadDp(id).subscribe(
         (r) => {
-          console.log(r);
+          // console.log(r);
           this.url = r;
         }, (err) => {
           console.log(err)
         }
       )
+    } catch (error) {
+      console.log(error);
     }
   }
   logout() {
