@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
 
   getNews() {
     return this.newsService.getAll().subscribe((data: News): void => {
+      // console.log(data);
       this.newsData = data.articles?.filter((e) => e.description !== null && !e.author?.includes("http:"));
     }, (err) => {
       console.log(err);
