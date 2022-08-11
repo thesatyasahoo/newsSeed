@@ -29,8 +29,8 @@ export class UserService {
   downloadDp(id: string) {
     return this.http.get(`${environment.baseUrl}/user/download/dp/${id}`, { responseType: 'blob' }).pipe(
       map(x => {
-        const urlToBlob = window.URL.createObjectURL(x) // get a URL for the blob
-        return this.sanitizer.bypassSecurityTrustResourceUrl(urlToBlob); // tell Anuglar to trust this value
+        const urlToBlob = window.URL.createObjectURL(x)
+        return this.sanitizer.bypassSecurityTrustResourceUrl(urlToBlob);
       }),
     );;
   }
